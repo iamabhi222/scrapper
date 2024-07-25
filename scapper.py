@@ -10,8 +10,9 @@ import re
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--ignore-ssl-errors')
+options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36')  # Add user agent
 
-
+# Initialize the WebDriver
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def get_content(vals):
@@ -21,7 +22,7 @@ def get_content(vals):
             print(f"Processing URL: {val}")
             try:
                 # Set up WebDriverWait
-                wait = WebDriverWait(driver, 20)
+                wait = WebDriverWait(driver, 10)
 
                 # Load the page
                 driver.get(val)
@@ -71,10 +72,6 @@ def get_content(vals):
                 print(f"TimeoutException for URL: {val} - {e}")
             except Exception as e:
                 print(f"An error occurred while processing {val}: {e}")
-
-# Example usage
-vals = ['https://example.com/page1', 'https://example.com/page2']
-get_content(vals)
 
 # Close the driver after processing
 driver.quit()

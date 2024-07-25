@@ -42,8 +42,8 @@ if __name__ == "__main__":
         cnt = 0
         for sector_name, links in sector.items():
             all_links.extend(links)
-            c = c + 1
-            if(c > 15):
+            cnt = cnt + 1
+            if(cnt > 15):
                 break
 
     # Scrape content from all collected links
