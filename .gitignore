@@ -2,3 +2,5 @@ __pycache__
 .venv
 samples
 output.txt
+interM_sentences.json
+cleaned_sentences.json
